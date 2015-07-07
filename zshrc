@@ -1,5 +1,7 @@
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="pygmalion"
+CASE_SENSITIVE="true"
+COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
@@ -33,4 +35,16 @@ alias vp="vagrant ssh -c 'cd project'"
 
 alias vzsh="vim ~/.zshrc"
 
+# Docker compose alias
+
+# dc == docker-compose
+alias dc="docker-compose"
+compdef dc=docker-compose
+
+# use custom ssh login with docker machines
 alias dssh="./ssh"
+
+# Git alias
+alias git-clean='git branch --merged master | ' \
+                'grep -v "\* master" | ' \
+                'xargs -n 1 git branch -d'
