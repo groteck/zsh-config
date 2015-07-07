@@ -5,10 +5,11 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
-source ~/.nvm/nvm.sh; nvm use 0.10;
+[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh" && nvm use 0.10
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-export PATH="$HOME/.gvm/scripts/gvm" \
-  ":$HOME/.rvm/bin" \
+export PATH=""\
   ":/bin" \
   ":/sbin" \
   ":/usr/bin" \
