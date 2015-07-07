@@ -9,8 +9,8 @@ source $ZSH/oh-my-zsh.sh
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-export PATH=""\
-  ":/bin" \
+export PATH=
+  "/bin" \
   ":/sbin" \
   ":/usr/bin" \
   ":/usr/games" \
