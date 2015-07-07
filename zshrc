@@ -9,41 +9,41 @@ source $ZSH/oh-my-zsh.sh
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-export PATH=
-  "/bin" \
-  ":/sbin" \
-  ":/usr/bin" \
-  ":/usr/games" \
-  ":/usr/local/bin" \
-  ":/usr/local/games" \
-  ":/usr/local/heroku/bin" \
-  ":/usr/local/sbin" \
-  ":/usr/sbin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 export EDITOR='vim'
 
 alias tmux="TERM=screen-256color-bce tmux"
 
-alias vu="vagrant up"
-alias vul="vagrant up --provider=lxc"
-alias vh="vagrant halt"
-alias vsus="vagrant suspend"
-alias vr="vagrant resume"
-alias vre="vagrant reload"
-alias vs="vagrant ssh"
-alias vstat="vagrant status"
-alias vp="vagrant ssh -c 'cd project'"
+if type "vagrant" > /dev/null; then
+  alias vu="vagrant up"
+  alias vul="vagrant up --provider=lxc"
+  alias vh="vagrant halt"
+  alias vsus="vagrant suspend"
+  alias vr="vagrant resume"
+  alias vre="vagrant reload"
+  alias vs="vagrant ssh"
+  alias vstat="vagrant status"
+  alias vp="vagrant ssh -c 'cd project'"
+fi
 
 alias vzsh="vim ~/.zshrc"
 
 # Docker compose alias
-
+if type "docker-compose" > /dev/null; then
 # dc == docker-compose
 alias dc="docker-compose"
 compdef dc=docker-compose
+fi
 
-# use custom ssh login with docker machines
-alias dssh="./ssh"
+# use custom ssh login with if ssh file exist
+function ssh () {
+  if [[ -s "ssh" ]] then
+    command ./ssh "$@"
+  else
+    ssh "$@"
+  fi
+}
 
 # Git alias
 alias git-clean='git branch --merged master | ' \
