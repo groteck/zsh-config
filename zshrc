@@ -42,7 +42,7 @@ function ssh () {
   if [[ -s "ssh" ]] then
     command ./ssh "$@"
   else
-    ssh "$@"
+    command ssh "$@"
   fi
 }
 
